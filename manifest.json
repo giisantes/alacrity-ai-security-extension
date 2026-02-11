@@ -2,6 +2,19 @@
   "manifest_version": 3,
   "name": "Surveillance Warning",
   "version": "1.0",
+  "description": "Add Description Here.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "scripting",
+    "activeTab",
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
 
   "permissions": ["storage"],
 
