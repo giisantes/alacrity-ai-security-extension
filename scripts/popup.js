@@ -7,23 +7,6 @@ const messageDiv = document.getElementById('message');
 // Counter for demo purposes
 let clickCount = 0;
 
-// Add click event listener
-actionBtn.addEventListener('click', () => {
-  clickCount++;
-  
-  // Display message
-  messageDiv.innerHTML = `
-    <strong>🎉 Test Successful!</strong><br>
-    <small>Button clicked ${clickCount} time${clickCount !== 1 ? 's' : ''}!</small>
-  `;
-  messageDiv.classList.add('show');
-  
-  // Add a fun animation
-  actionBtn.style.transform = 'scale(0.95)';
-  setTimeout(() => {
-    actionBtn.style.transform = 'scale(1)';
-  }, 100);
-});
 
 // Add event listener for Check URL button
 actionBtnTest.addEventListener('click', async () => {
