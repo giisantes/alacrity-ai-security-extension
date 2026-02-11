@@ -6,8 +6,8 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 350px;
-  min-height: 400px;
+  width: 380px;
+  min-height: 450px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
@@ -51,7 +51,7 @@ body {
 
 .action-button {
   padding: 12px 30px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: #667eea;
   background: #fff;
@@ -60,6 +60,11 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .action-button:hover {
