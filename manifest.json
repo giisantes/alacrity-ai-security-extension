@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Surveillance Warning",
+  "name": "Ai Guard",
   "version": "1.0",
-  "description": "Add Description Here.",
+  "description": "Protecting users from using unsafe AI tools.",
   "action": {
     "default_popup": "popup.html"
   },
@@ -18,8 +18,16 @@
   ],  "content_scripts": [
     {
       "matches": [
-        "https://chatgpt.com/",
-        "https://copilot.microsoft.com/"
+ "*://chatgpt.com/*",
+ "*://copilot.microsoft.com/*",
+ "*://gemini.google.com/*",
+ "*://deepseek.com/*",
+ "*://openai.com/*",
+ "*://claude.ai/*",
+ "*://perplexity.ai/*",
+ "*://mistral.ai/*",
+ "*://grok.com/*",
+ "*://x.ai/*"
       ],
       "js": ["scripts/content.js"],
       "css": ["style.css"]
