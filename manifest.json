@@ -3,4 +3,10 @@
   "name": "Simple Popup Ext",
   "version": "1.0",
   "description": "Add Description Here.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabs"
+  ]
 }
