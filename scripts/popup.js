@@ -51,14 +51,13 @@ actionBtnTest.addEventListener('click', async () => {
       messageDiv.classList.add('show');
       return;
     }
-    
-    messageDiv.innerHTML = `<strong>⏳ Extracting metadata...</strong>`;
+      messageDiv.innerHTML = `<strong>⏳ Extracting metadata...</strong>`;
     messageDiv.classList.add('show');
     
     // Execute the extract.js script in the current tab
     const results = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ['extract.js']
+      files: ['scripts/extract.js']
     });
       // Show success message with URL
     const url = new URL(tab.url);

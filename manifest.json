@@ -15,16 +15,13 @@
   ],
   "host_permissions": [
     "<all_urls>"
-
-  "permissions": ["storage"],
-
-  "content_scripts": [
+  ],  "content_scripts": [
     {
       "matches": [
         "https://chatgpt.com/",
         "https://copilot.microsoft.com/"
       ],
-      "js": ["content.js"],
+      "js": ["scripts/content.js"],
       "css": ["style.css"]
     }
   ],
