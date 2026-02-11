@@ -10,6 +10,7 @@ function extractPageMetadata() {
         console.log('localStorage not accessible, will use chrome.storage');
     }
     
+    
     if (!userId) {
         // Generate unique user ID using timestamp + random string
         userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
