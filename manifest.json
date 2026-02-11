@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Simple Popup Ext",
+  "name": "alacrity ai security extension",
   "version": "1.0",
-  "description": "Add Description Here.",
+  "description": "monitoring ai usage across various websites."
 }
