@@ -1,0 +1,30 @@
+#surveillance-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffcc00;
+    color: black;
+    font-family: Arial;
+    z-index: 999999;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.banner-content button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#continueBtn {
+    background: green;
+    color: white;
+}
+
+#leaveBtn {
+    background: red;
+    color: white;
+}
