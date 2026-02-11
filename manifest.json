@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Simple Popup Ext",
+  "name": "Surveillance Warning",
   "version": "1.0",
   "description": "Add Description Here.",
   "action": {
@@ -15,5 +15,24 @@
   ],
   "host_permissions": [
     "<all_urls>"
+
+  "permissions": ["storage"],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/",
+        "https://copilot.microsoft.com/"
+      ],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["warning.html"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }
