@@ -17,9 +17,9 @@ if (!document.getElementById("ai-safety-overlay")) {
                     <button id="continueBtnClose">Continue</button>
                     <button id="leaveBtn">Leave Page</button>
                 </div>
-                <div style="margin-top: 15px; font-size: 12px; color: #888;">
-                    Approved AI.
-                </div>
+                <a target="_self" href="https://www.google.com" style="margin-top: 15px; font-size: 12px;color: #007bff; text-decoration: none;" target="_blank">
+                        Approved AI.
+                </a>
             </div>
         </div>
     `;
