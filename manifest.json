@@ -22,6 +22,7 @@
  "*://copilot.microsoft.com/*",
  "*://gemini.google.com/*",
  "*://deepseek.com/*",
+ "*://chat.deepseek.com/*",
  "*://openai.com/*",
  "*://claude.ai/*",
  "*://perplexity.ai/*",
