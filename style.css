@@ -49,9 +49,13 @@ line-height: 1.5;
 #continueBtnClose {
     background: #28a745;
     color: white; 
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
 #leaveBtn {
     background: #dc3545;
     color: white; 
+    border-radius: 5px;
+    padding: 10px 20px;
 }

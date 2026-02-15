@@ -3,8 +3,20 @@
   "name": "Ai Guard",
   "version": "1.0",
   "description": "Protecting users from using unsafe AI tools.",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+
   "action": {
-    "default_popup": "popup.html"
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "Ai Guard",
+    "default_popup": "dropdown.html"
   },
   "permissions": [
     "tabs",
@@ -37,7 +49,7 @@
 
   "web_accessible_resources": [
     {
-      "resources": ["warning.html"],
+      "resources": ["approvedAi.html"],
       "matches": ["<all_urls>"]
     }
   ]

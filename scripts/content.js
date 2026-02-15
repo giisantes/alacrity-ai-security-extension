@@ -15,11 +15,13 @@ if (!document.getElementById("ai-safety-overlay")) {
                 </p>
                 <div class="button-group">
                     <button id="continueBtnClose">Continue</button>
-                    <button id="leaveBtn">Leave Page</button>
-                </div>
-                <a target="_self" href="https://www.google.com" style="margin-top: 15px; font-size: 12px;color: #007bff; text-decoration: none;" target="_blank">
+                    <button id="leaveBtn">
+                    Leave Page
+                    </button>
+                    </div>
+                <button target="_self" id="approvedAIlink"  style="margin-top: 15px; font-size: 12px;color: #007bff; text-decoration: none;" target="_blank">
                         Approved AI.
-                </a>
+                </button>
             </div>
         </div>
     `;
@@ -30,8 +32,13 @@ if (!document.getElementById("ai-safety-overlay")) {
     document.getElementById("continueBtnClose").onclick = () => {
         overlay.remove();
     };
-
+    
     document.getElementById("leaveBtn").onclick = () => {
-        window.location.href = chrome.runtime.getURL("warning.html");
+        window.location.href = "https://www.google.com";
+    };
+
+    document.getElementById("approvedAIlink").onclick = () => {
+        window.location.href = chrome.runtime.getURL("approvedAi.html");
+
     };
 }
