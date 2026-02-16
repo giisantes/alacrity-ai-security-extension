@@ -16,7 +16,7 @@
       "128": "images/icon128.png"
     },
     "default_title": "Ai Guard",
-    "default_popup": "dropdown.html"
+    "default_popup": "popup.html"
   },
   "permissions": [
     "tabs",

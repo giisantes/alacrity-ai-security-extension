@@ -16,8 +16,8 @@
     position: relative;            
     width: 400px;                  
     max-width: 90%;
-    background: white; 
-    color: #333;
+    background:  #222831;; 
+    color: #eeeeee;
     font-family: 'Segoe UI', Arial, sans-serif;
     padding: 25px;
     text-align: center;
@@ -46,16 +46,32 @@ line-height: 1.5;
     opacity: 0.9;
 }
 
-#continueBtnClose {
-    background: #28a745;
+#continueBtn {
+    background: #0092ca;
+    color: white; 
+    border-radius: 5px;
+    padding: 10px 20px;
+
+}
+
+#leaveBtn {
+    background: #0092ca;
     color: white; 
     border-radius: 5px;
     padding: 10px 20px;
 }
 
-#leaveBtn {
-    background: #dc3545;
-    color: white; 
-    border-radius: 5px;
-    padding: 10px 20px;
+#continueBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #cccccc; 
+  }
+
+#approvedAIlink {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #007bff;
+    text-decoration: none;
+    text-decoration: underline;
 }
+    
