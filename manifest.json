@@ -31,12 +31,12 @@
     {
       "matches": [
  "*://chatgpt.com/*",
- "*://copilot.microsoft.com/*",
+ //"*://copilot.microsoft.com/*",
  "*://gemini.google.com/*",
  "*://deepseek.com/*",
  "*://chat.deepseek.com/*",
  "*://openai.com/*",
- "*://claude.ai/*",
+ //"*://claude.ai/*",
  "*://perplexity.ai/*",
  "*://mistral.ai/*",
  "*://grok.com/*",
