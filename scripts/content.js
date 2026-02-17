@@ -1,60 +1,57 @@
-// prevent duplicate banner
 if (!document.getElementById("ai-safety-overlay")) {
-    // 1. Create the full-screen overlay (the blur and centering layer)
     const overlay = document.createElement("div");
     overlay.id = "ai-safety-overlay";
 
-    // 2. Put the popup box INSIDE the overlay
     overlay.innerHTML = `
         <div id="ai-safety-overlay-popup">
             <div class="banner-content">
                 <div style="font-size: 30px; margin-bottom: 10px;">⚠️</div>
-                <strong style="font-size: 18px;">Caution: Unapproved AI Interaction Detected</strong>
-                <p style="margin-top: 10px; font-size: 14px; padding: 10px 20px; text-align: center;">    
-                    This may not be safe or secure to use, chats may not be encrypted or private. <br><br> Please confirm that you will not share sensitive or confidential company data.
-                                <br><br>            
-                        <label>
-                        <input type="checkbox" id="terms-checkbox"> 
-                        I agree to the terms and conditions
-                        </label>
-
-                </p>
-                <div class="button-group">
-                    <button id="continueBtn" disabled>Continue</button>
-                    <button id="leaveBtn">
-                    Leave Page
-                    </button>
+                <strong style="font-size: 18px;">Caution: AI Interaction Detected</strong>
+                <p id="statusMsg" style="margin-top: 10px; font-size: 14px; color: #ccc;">Checking registration status...</p>
+                <div class="button-group" style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+                    <button id="continueBtnClose" disabled style="opacity: 0.5; cursor: not-allowed;">Wait (<span id="timerSlot">5</span>s)</button>
+                    <button id="leaveBtn" style="background: white; color: black; font-weight: 700; border: none; padding: 14px; cursor: pointer;">View Approved AI</button>
                 </div>
-                <button target="_self" id="approvedAIlink" target="_blank">
-                        Approved AI.
-                </button>
+                <a id="approvedAIlink" href="${chrome.runtime.getURL("approvedAi.html")}" style="display: inline-block; margin-top: 20px; font-size: 12px; color: #D67062; text-decoration: none; text-transform: uppercase; letter-spacing: 1px;">
+                        Go to Secure Environment
+                </a>
             </div>
         </div>
     `;
 
     document.body.prepend(overlay);
-    
-    
-const checkbox = document.getElementById('terms-checkbox');
-    checkbox.addEventListener('change', function() {
-        const continueBtn = document.getElementById('continueBtn');
-        continueBtn.disabled = !this.checked;
-        continueBtn.enabled = this.checked;
+
+    const continueBtn = document.getElementById("continueBtnClose");
+    const statusMsg = document.getElementById("statusMsg");
+    const timerSlot = document.getElementById("timerSlot");
+
+    chrome.storage.local.get(['registeredName'], (result) => {
+        if (!result.registeredName) {
+            statusMsg.textContent = "Registration Required. Please click the extension icon to verify your identity.";
+            statusMsg.style.color = "#D64D54"; 
+            continueBtn.textContent = "Identity Unverified";
+            return;
+        }
+
+        statusMsg.textContent = `Hello ${result.registeredName}. This session is being logged for security compliance.`;
+        
+        let timeLeft = 5;
+        const countdown = setInterval(() => {
+            timeLeft--;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                continueBtn.disabled = false;
+                continueBtn.textContent = "Continue (Logged)";
+                continueBtn.style.opacity = "1";
+                continueBtn.style.cursor = "pointer";
+                continueBtn.style.border = "1px solid white";
+                continueBtn.style.color = "white";
+            } else {
+                timerSlot.textContent = timeLeft;
+            }
+        }, 1000);
     });
 
-    // 3. Update the click handler to remove the whole overlay
-    document.getElementById("continueBtn").onclick = () => {
-        overlay.remove();
-    };
-    
-    document.getElementById("leaveBtn").onclick = () => {
-        window.location.href = "https://www.google.com";
-    };
-
-    document.getElementById("approvedAIlink").onclick = () => {
-        window.location.href = chrome.runtime.getURL("approvedAi.html");
-
-    };
-
-
+    continueBtn.onclick = () => { if (!continueBtn.disabled) overlay.remove(); };
+    document.getElementById("leaveBtn").onclick = () => { window.location.href = chrome.runtime.getURL("approvedAi.html"); };
 }

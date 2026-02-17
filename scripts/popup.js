@@ -1,88 +1,72 @@
 // Get DOM elements
-const actionBtn = document.getElementById('actionBtn');
-const actionBtnTest = document.getElementById('actionBtnTest');
+const loginSection = document.getElementById('loginSection');
+const employeeUI = document.getElementById('employeeUI');
+const managerUI = document.getElementById('managerUI');
+const userNameInput = document.getElementById('userName'); // New field for employee name
+const accessCodeInput = document.getElementById('accessCode');
+const loginBtn = document.getElementById('loginBtn');
 const viewDataBtn = document.getElementById('viewDataBtn');
-const messageDiv = document.getElementById('message');
+const actionBtnTest = document.getElementById('actionBtnTest');
 
-// Counter for demo purposes
-let clickCount = 0;
+// Persistent Role and Identity Check
+chrome.storage.local.get(['userRole', 'registeredName'], (result) => {
+    if (result.userRole === 'admin') {
+        showUI('managerUI');
+    } else if (result.userRole === 'employee' && result.registeredName) {
+        showUI('employeeUI');
+    }
+});
 
+function showUI(roleId) {
+    loginSection.style.display = 'none';
+    if (roleId === 'managerUI') {
+        managerUI.style.display = 'block';
+    } else {
+        employeeUI.style.display = 'block';
+    }
+}
 
-// Add event listener for Check URL button
-actionBtnTest.addEventListener('click', async () => {
-  try {
-    // Check if chrome.scripting API is available
-    if (!chrome.scripting) {
-      throw new Error('Scripting API not available. Please reload the extension.');
+loginBtn.addEventListener('click', () => {
+    const enteredID = document.getElementById('employeeID').value.trim();
+    const enteredName = document.getElementById('userName').value.trim();
+    const enteredCode = document.getElementById('accessCode').value;
+
+    // Admin bypass for initial setup
+    if (enteredCode === 'ADMIN123') {
+        chrome.storage.local.set({ userRole: 'admin' }, () => showUI('managerUI'));
+        return;
     }
-    
-    // Get the active tab
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    
-    if (!tab) {
-      messageDiv.textContent = 'No active tab found!';
-      messageDiv.classList.add('show');
-      return;
-    }
-    
-    // Check if we can inject into this page
-    if (tab.url.startsWith('chrome://') || tab.url.startsWith('edge://') || tab.url.startsWith('about:')) {
-      messageDiv.innerHTML = `
-        <strong>⚠️ Cannot access this page</strong><br>
-        <small>Chrome internal pages are protected</small>
-      `;
-      messageDiv.classList.add('show');
-      return;
-    }
-      messageDiv.innerHTML = `<strong>⏳ Extracting metadata...</strong>`;
-    messageDiv.classList.add('show');
-    
-    // Execute the extract.js script in the current tab
-    const results = await chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ['scripts/extract.js']
+
+    // Dynamic Employee Validation
+    chrome.storage.local.get(['authorized_users'], (result) => {
+        const users = result.authorized_users || {};
+        
+        // Logic: Check if ID exists and if the code matches the ID
+        if (users[enteredID] && users[enteredID] === enteredCode) {
+            chrome.storage.local.set({ 
+                userRole: 'employee', 
+                registeredName: enteredName,
+                registeredID: enteredID 
+            }, () => {
+                showUI('employeeUI');
+            });
+        } else {
+            alert('ACCESS DENIED: Employee ID or Access Code is invalid. Contact your manager.');
+        }
     });
-      // Show success message with URL
-    const url = new URL(tab.url);
-    messageDiv.innerHTML = `
-      <strong>✓ Metadata Extracted & Saved!</strong><br>
-      <small>🌐 Domain: ${url.hostname}</small><br>
-      <small>📝 Data stored in browser storage</small><br>
-      <small style="color: #4CAF50;">💡 Click "View & Export Data" to download files</small>
-    `;
-    messageDiv.classList.add('show');
-    
-    // Log the result to popup console
-    console.log('Extraction complete for:', tab.url);
-    console.log('Results:', results);
-    
-  } catch (error) {
-    messageDiv.innerHTML = `
-      <strong>❌ Error:</strong><br>
-      <small>${error.message}</small>
-    `;
-    messageDiv.classList.add('show');
-    console.error('Error extracting metadata:', error);
-  }
 });
 
-// Add event listener for View Data button
 viewDataBtn.addEventListener('click', () => {
-  chrome.tabs.create({
-    url: chrome.runtime.getURL('data-viewer.html')
-  });
+    chrome.tabs.create({ url: chrome.runtime.getURL('data-viewer.html') });
 });
 
-// Optional: Get current tab info
-chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-  if (tabs[0]) {
-    console.log('Current tab:', tabs[0].url);
-  }
-});
-
-// Optional: Add keyboard support
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    actionBtn.click();
-  }
+actionBtnTest.addEventListener('click', async () => {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (tab && !tab.url.startsWith('chrome://')) {
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            files: ['scripts/extract.js']
+        });
+        alert('Compliance scan force-initiated.');
+    }
 });

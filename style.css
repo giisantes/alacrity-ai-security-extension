@@ -1,11 +1,12 @@
+/* --- Global & Overlay Styles --- */
 #ai-safety-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(8px);;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
     z-index: 999998;
     display: flex;
     align-items: center;
@@ -16,65 +17,25 @@
     position: relative;            
     width: 400px;                  
     max-width: 90%;
-    background:  #222831;; 
-    color: #eeeeee;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    padding: 25px;
+    background: #000000; 
+    color: white;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding: 35px;
     text-align: center;
-    border-radius: 12px;  
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-.overlay-content {
-font-size: 16px;
-margin-bottom: 20px;
-line-height: 1.5;
+#continueBtnClose {
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    padding: 14px 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
 }
 
-.overlay-content button {
-    margin: 10px 5px 0;
-    padding: 10px 20px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: opacity 0.3s ease;
-}
-
-.overlay-content button:hover {
-    opacity: 0.9;
-}
-
-#continueBtn {
-    background: #0092ca;
-    color: white; 
-    border-radius: 5px;
-    padding: 10px 20px;
-
-}
-
-#leaveBtn {
-    background: #0092ca;
-    color: white; 
-    border-radius: 5px;
-    padding: 10px 20px;
-}
-
-#continueBtn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background-color: #cccccc; 
-  }
-
-#approvedAIlink {
-    margin-top: 15px;
-    font-size: 12px;
-    color: #007bff;
-    text-decoration: none;
-    text-decoration: underline;
-}
-    
 /* --- Approved AI Portal Styles --- */
 :root {
     --bg-black: #000000;
@@ -85,16 +46,12 @@ line-height: 1.5;
     --muted-gray: #777777;
 }
 
-/* Specific to the standalone warning/portal page */
 .approved-ai-body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--bg-black);
     color: var(--text-white);
     margin: 0;
-    padding: 0;
     overflow-x: hidden;
-    height: auto;
-    width: auto;
 }
 
 .watermark {
@@ -114,7 +71,6 @@ line-height: 1.5;
     padding: 40px 60px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .logo-box {
@@ -123,120 +79,19 @@ line-height: 1.5;
     font-weight: 900;
     letter-spacing: 5px;
     font-size: 24px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.main-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 60px 20px;
-    position: relative;
-    z-index: 1;
-}
+.logo-link { text-decoration: none; color: inherit; display: inline-block; }
+.logo-link:hover .logo-box { transform: scale(1.15); border-color: var(--accent-orange); }
 
-.main-container h1 {
-    font-size: 4rem;
-    line-height: 1.1;
-    font-weight: 800;
-    margin-bottom: 40px;
-}
-
+.main-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.main-container h1 { font-size: 4rem; line-height: 1.1; font-weight: 800; }
 .highlight-orange { color: var(--accent-orange); }
 .highlight-coral { color: var(--accent-coral); }
 .highlight-red { color: var(--accent-red); }
 
-.description {
-    font-size: 1.2rem;
-    color: var(--text-white);
-    max-width: 600px;
-    margin-bottom: 50px;
-    line-height: 1.6;
-}
-
-.ai-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.ai-card {
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 40px;
-    transition: 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.ai-card:hover {
-    border-color: var(--accent-orange);
-    background: rgba(255,255,255,0.02);
-}
-
-.ai-card h3 {
-    font-size: 1.8rem;
-    margin-top: 0;
-    font-weight: 700;
-    color: white;
-}
-
-.ai-card p {
-    color: var(--muted-gray);
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 30px;
-}
-
-.btn-outline {
-    display: inline-block;
-    border: 1px solid white;
-    color: white;
-    padding: 12px 30px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    transition: 0.3s;
-    text-align: center;
-}
-
-.btn-outline:hover {
-    background: white;
-    color: black;
-}
-
-.security-footer {
-    margin-top: 100px;
-    padding: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.8rem;
-    color: var(--muted-gray);
-    display: flex;
-    justify-content: space-between;
-}
-
-/* --- Logo Interaction Styles --- */
-
-/* Remove default link styling */
-.logo-link {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block; /* Required for transform to work */
-}
-
-/* Base state for the logo box */
-.logo-box {
-    border: 2px solid white;
-    padding: 5px 15px;
-    font-weight: 900;
-    letter-spacing: 5px;
-    font-size: 24px;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth "pop" effect */
-}
-
-/* Expansion state on hover */
-.logo-link:hover .logo-box {
-    transform: scale(1.15); /* Expands by 15% */
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight */
-    border-color: var(--accent-orange); /* Changes border to brand orange */
-}
+.ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 50px; }
+.ai-card { border: 1px solid rgba(255,255,255,0.1); padding: 40px; }
+.btn-outline { display: inline-block; border: 1px solid white; color: white; padding: 12px 30px; text-decoration: none; text-transform: uppercase; font-weight: 700; transition: 0.3s; }
+.btn-outline:hover { background: white; color: black; }

@@ -3,20 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>temporary ai dropdown</title>
+  <title>ALACRITY | Guard</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="popup-container">
     <div class="header">
-      <h1>Extract Logs</h1>
-    </div>    <div class="content">
-      <p class="welcome-text">URL Metadata Extractor & Security Analyzer</p>
-      <button id="actionBtnTest" class="action-button">🔍 Extract URL Metadata</button>
-      <button id="viewDataBtn" class="action-button">📊 View & Export Data</button>
-      <div id="message" class="message"></div>
+        <div class="logo-box-small">ALACRITY</div>
     </div>
-    <div class="footer">      <p class="footer-text">Version 1.0</p>
+    
+<div id="loginSection" class="content">
+    <p class="site-info">IDENTITY VERIFICATION REQUIRED</p>
+    <input type="text" id="employeeID" placeholder="ENTER EMPLOYEE ID" class="login-input" style="background: transparent; border: 1px solid #333; color: white; padding: 10px; width: 80%; margin-bottom: 10px; text-align: center;">
+    <input type="text" id="userName" placeholder="ENTER FULL NAME" class="login-input" style="background: transparent; border: 1px solid #333; color: white; padding: 10px; width: 80%; margin-bottom: 10px; text-align: center;">
+    <input type="password" id="accessCode" placeholder="ENTER ACCESS CODE" class="login-input" style="background: transparent; border: 1px solid #333; color: white; padding: 10px; width: 80%; margin-bottom: 10px; text-align: center; letter-spacing: 2px;">
+    <button id="loginBtn" class="action-button">AUTHORIZE SESSION</button>
+    <p style="font-size: 9px; color: #555; margin-top: 5px;">Credentials must be pre-authorized by your system administrator.</p>
+</div>
+
+    <div id="employeeUI" style="display:none;">
+        <div class="status-section">
+            <div class="status-indicator pulse"></div>
+            <p class="status-text">SHIELD ACTIVE</p>
+            <p class="site-info">COMPLIANCE MONITORING ENABLED</p>
+        </div>
+        <div class="content">
+            <p class="footer-text" style="text-align: center; font-size: 10px; color: #777; line-height: 1.4;">
+                Your activity on unapproved AI domains is automatically logged for corporate security auditing.
+            </p>
+        </div>
+    </div>
+
+    <div id="managerUI" style="display:none;">
+        <div class="status-section">
+            <p class="status-text" style="color: #E58E58;">ADMIN PORTAL</p>
+            <p class="site-info">SURVEILLANCE MODE ACTIVE</p>
+        </div>
+        <div class="content">
+          <button id="viewDataBtn" class="action-button">ACCESS SURVEILLANCE LOGS</button>
+          <button id="actionBtnTest" class="action-button secondary">FORCE SCAN METADATA</button>
+        </div>
+    </div>
+
+    <div class="footer">
+      <p>SECURE. COMPLIANT. INNOVATIVE.</p>
     </div>
   </div>
   <script src="scripts/popup.js"></script>
