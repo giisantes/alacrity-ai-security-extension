@@ -1,12 +1,15 @@
-export const POPULAR_AI_DOMAINS = [
+export const unapprovedAiDomains = [
   "gemini.google.com", 
-  "copilot.microsoft.com",
   "deepseek.com", 
   "chatgpt.com", 
   "openai.com", 
-  "claude.ai", 
   "perplexity.ai", 
   "mistral.ai", 
   "grok.com",
   "x.ai"
+];
+
+const approvedAiDomains = [
+  "copilot.microsoft.com",
+  "claude.ai"
 ];

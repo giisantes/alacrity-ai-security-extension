@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Surveillance Warning",
+  "name": "Alacrity Guard",
   "version": "1.0",
-  "description": "Add Description Here.",
+  "description": "Enterprise AI surveillance and security compliance.",
   "action": {
     "default_popup": "popup.html"
   },
@@ -15,20 +15,29 @@
   ],
   "host_permissions": [
     "<all_urls>"
-  ],  "content_scripts": [
+  ],
+  "content_scripts": [
     {
       "matches": [
-        "https://chatgpt.com/",
-        "https://copilot.microsoft.com/"
+        "*://chatgpt.com/*",
+        "*://copilot.microsoft.com/*",
+        "*://gemini.google.com/*",
+        "*://deepseek.com/*",
+        "*://chat.deepseek.com/*",
+        "*://openai.com/*",
+        "*://claude.ai/*",
+        "*://perplexity.ai/*",
+        "*://mistral.ai/*",
+        "*://grok.com/*",
+        "*://x.ai/*"
       ],
-      "js": ["scripts/content.js"],
+      "js": ["scripts/extract.js", "scripts/content.js"],
       "css": ["style.css"]
     }
   ],
-
   "web_accessible_resources": [
     {
-      "resources": ["warning.html"],
+      "resources": ["warning.html", "style.css"],
       "matches": ["<all_urls>"]
     }
   ]
