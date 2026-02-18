@@ -1,3 +1,39 @@
+Huge Thanks for organising this hackathon, it quite a fun challenge in which I learned many thing in new areas. Please take into consideration that I was working solo on this project and that given more time, I would be able to offer a more complete extension across multiple browsers
+
+# Installation
+
+1. Download the source code: Using the command terminal, navigate to the desired file location and run "git clone https://github.com/giisantes/alacrity-ai-security-extension.git"
+2. Open a chromium based web browser and navigate to the extensions management page: Type "chrome://extensions/" and press enter in the search bar
+3. enable developer mode
+4. Press "load unpacked" and upload the folder you downloaded <img width="1912" height="220" alt="image" src="https://github.com/user-attachments/assets/dadcf1fc-3254-4132-8539-5f3902252493" />
+
+5. try accessing an ai domain such as https://www.chatgpt.com
+
+# Snippets
+
+<img width="1895" height="997" alt="alacrity dashboard" src="https://github.com/user-attachments/assets/f2e64c52-d6a7-4e17-8f03-937f290642bc" />
+
+Here, I attempted to replicate the styling on the alacrity website, including the buttons changing colour when hovered over, and the logo enlarging, when clicked on it redirects to https://alacrityfoundation.co.uk/
+
+<img width="1906" height="914" alt="dwad" src="https://github.com/user-attachments/assets/01309d74-d58f-4e8a-b716-686db693d492" />
+
+<img width="1911" height="1001" alt="usernotloggedin" src="https://github.com/user-attachments/assets/9f6e7185-09f9-45f0-aed2-664d9148c1b2" />
+
+<img width="1900" height="944" alt="alternate design checkbox 5secondtimer" src="https://github.com/user-attachments/assets/19510d83-fc85-4fb7-be92-1a691db89150" />
+
+
+
+# Next Steps
+
+- Add a real database, currently we're using a hardcoded admin to add employees, this would be a security issue but is acceptable for an MVP
+- Link up to a large database of ai domain, or use an api, or less reliably, screen for domains such as ".ai"
+
+- Add various surveilence levels admins can select from --> may require more metadata such as input prompts
+
+Potential features that I considered using (or removed temporarily for re-styling); 5-10 second timer before being able to continue past popup on unapproved ai domains, mandatory checkbox agreeing not to input sensitive company data also blocking the continue button, timer only starts after the checkbox has been ticked. This aims to be less restricting by making the unapproved AI so inconveinient to use that employees opt for the approved domains.
+
+
+///////////////////////////
 # Updates
 
 Hey guys, please could you email me if you are interested in continuing this project (since nobody has interacted since the hackathon):
